@@ -14,7 +14,7 @@ Malaria dataset of 27,558 cell images with an equal number of parasitized and un
 ## Neural Network Model:
 ![image](https://github.com/ShafeeqAhamedS/malaria-cell-recognition/assets/93427237/38855152-5c96-4f5d-930f-6e6dbf5ffc2c)
 
-</br></br></br>
+</br></br></br></br>
 
 ## DESIGN STEPS:
 
@@ -36,6 +36,9 @@ Plot the performance plot.
 Evaluate the model with the testing data using probability prediction(uninfected-> prob>0.5,parasitized-> <=0.5).
 ### STEP 10:
 Fit the model and predict the sample input.
+
+</br></br></br></br>
+</br>
 
 ## PROGRAM
 ### Import Liraries
@@ -70,18 +73,14 @@ set_session(sess)
 my_data_dir = "./cell_images"
 
 os.listdir(my_data_dir)
-
 test_path = my_data_dir+'/test/'
 train_path = my_data_dir+'/train/'
 
 os.listdir(train_path)
-
 len(os.listdir(train_path+'/uninfected/'))
-
 len(os.listdir(train_path+'/parasitized/'))
 
 os.listdir(train_path+'/parasitized')[0]
-
 para_img= imread(train_path+'/parasitized/'+os.listdir(train_path+'/parasitized')[0])
 
 plt.imshow(para_img)
@@ -144,7 +143,7 @@ test_image_gen = image_gen.flow_from_directory(test_path,target_size=image_shape
                               color_mode='rgb',batch_size=batch_size,
                               class_mode='binary',shuffle=False)
 train_image_gen.class_indices
-results = model.fit(train_image_gen,epochs=2,validation_data=test_image_gen)
+results = model.fit(train_image_gen,epochs=5,validation_data=test_image_gen)
 model.save('cell_model.h5')
 ```
 ### Plot the graphs
@@ -181,13 +180,17 @@ plt.show()
 
 ### Training Loss, Validation Loss Vs Iteration Plot
 ![image](https://github.com/ShafeeqAhamedS/malaria-cell-recognition/assets/93427237/143d8d8a-493c-4f83-85a2-6abcc7437570)
-### Classification Report
-![image](https://github.com/ShafeeqAhamedS/malaria-cell-recognition/assets/93427237/17e1f6df-f192-4a06-b506-3a9593b3c9f2)
-### Confusion Matrix
-![image](https://github.com/ShafeeqAhamedS/malaria-cell-recognition/assets/93427237/feae1f95-819c-4bdc-9b5e-b81c6faa4895)
+### Classification Report:
+![image](https://github.com/SanjayKumarAIML/malaria-cell-recognition/assets/93427246/4c82eba9-6b84-49a5-8068-ef2d9dd7a158)
+<br>
+### Confusion Matrix:
+![image](https://github.com/SanjayKumarAIML/malaria-cell-recognition/assets/93427246/f7281e69-61c5-46e4-8c63-f16f557ea555)
+<br>
+### New Sample Data Prediction:
+<img width="350" src="https://github.com/SanjayKumarAIML/malaria-cell-recognition/assets/93427246/a3d85650-9c5a-4dc6-be56-8b373b6cc9f6">
 
+</br>
 
-### New Sample Data Prediction
-![image](https://github.com/ShafeeqAhamedS/malaria-cell-recognition/assets/93427237/86d2be3b-b9cd-4c2a-bbf8-d16a8489accd)
+<img width="350" src="https://github.com/SanjayKumarAIML/malaria-cell-recognition/assets/93427246/a85d0487-564d-4b4b-8e97-24c21a7558db">
 ## RESULT:
 Thus, a deep neural network for Malaria infected cell recognition is developed and the performance is analyzed.
